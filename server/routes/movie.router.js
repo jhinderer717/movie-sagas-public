@@ -2,6 +2,18 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+router.get('/', (req, res) => {
+  console.log('movie.router get hit');
+  let queryText = `SELECT * FROM "movies" ORDER BY "id" ASC;`;
+  pool.query(queryText).then(result => {
+    // sends back the results in an object
+    res.send(result.rows);
+  }).catch(error => {
+    console.log(`"Frick."  - Colin Baumgard`, error);
+    res.sendStatus(500);
+  }); // end pool.query
+}); // end router.get
+
 router.post('/', (req, res) => {
   console.log(req.body);
   // RETURNING "id" will give us back the id of the created movie
