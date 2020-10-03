@@ -6,7 +6,7 @@
 [ ] create a join table
 
 ## Home page ##
-[ ] displays all movies in the database with posters
+[x] displays all movies in the database with posters
 [ ] on movie click, bring user to details view
 
 ## Details view ##

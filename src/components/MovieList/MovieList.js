@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovieItem from '../MovieItem/MovieItem';
+//import {Link} from 'react-router-dom';
+//import {Button, Card, CardContent} from '@material-ui/core';
 
 
 class MovieList extends Component {
