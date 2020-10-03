@@ -44,10 +44,12 @@ function* fetchMovieSaga() {
     });
 } // end fetchMovieSaga
 
-function* addMovieSaga() {
+function* addMovieSaga(action) {
+    console.log('!! addMovieSaga hit !!');
     yield axios({
         method: 'POST',
-        url: '/api/movie'
+        url: '/api/movie',
+        data: action.payload,
     });
 } // addMovieSaga
 
@@ -85,7 +87,7 @@ const movies = (state = [], action) => {
 
 // Reducer used to store in reduxState movie details of one movie
 const movie = (state = [], action) => {
-    console.log('hit movie Reducer with:', action.payload);
+    //console.log('hit movie Reducer with:', action.payload);
     if(action.type === 'MOVIE_DETAIL') {
         return action.payload;
     }
@@ -94,7 +96,7 @@ const movie = (state = [], action) => {
 
 // Reducer used to store in reduxState genre(s) of one movie
 const genres = (state = [], action) => {
-    console.log('hit movie Reducer with:', action.payload);
+    //console.log('hit genre Reducer with:', action.payload);
     if(action.type === 'MOVIE_GENRES') {
         return action.payload;
     }

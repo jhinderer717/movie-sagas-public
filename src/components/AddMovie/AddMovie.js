@@ -9,8 +9,8 @@ class AddMovie extends Component {
         title: '',
         poster: '',
         description: '',
-        genreId: '',
-    }
+        genre_Id: '1', // this gets changed because value={this.state.genreId} is in the <select ...> tag
+    }                  // default is 1 because the dropdown is Adventure at page load
 
     handleStateChange(event, key) {
         console.log('handleStateChange');
@@ -20,15 +20,20 @@ class AddMovie extends Component {
     } // end handleStateChange
 
     additionSubmit() {
+        this.props.dispatch({
+            type: "ADD_MOVIE",
+            payload: this.state,
+        });
         // this.props.dispatch({
-        //     type: "ADD_MOVIE",
-        //     payload: this.state,
+        //     type: "FETCH_MOVIE"
         // });
-        console.log('AddMovie props');
+        //console.log('AddMovie props', this.props);
+        // import withRouter, decorate export withRouter()
+        //this.props.history.push('/');// take out out join table id?, update material ui
     }
 
     render(){
-        console.log('AddMovie props', this.props);
+        console.log('AddMovie state', this.state);
         return( // Can also just use <> </> instead of divs
             <div>
                 AddMovie
@@ -41,8 +46,9 @@ class AddMovie extends Component {
                         <option key={i} value={i+1}>{genre}</option>
                     )}
                 </select>
+
                 <Link to='/'><button>Cancel</button></Link>
-                <button onClick={this.additionSubmit}>Submit</button>
+                <button onClick={() => this.additionSubmit(this.props)}>Submit</button>
             </div>
         );
     }
