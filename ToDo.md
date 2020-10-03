@@ -3,11 +3,12 @@
 
 [x] create database
 [x] run database queries
-[ ] create a join table
+[x] create a join table
 
 ## Home page ##
 [x] displays all movies in the database with posters
 [x] on movie click, bring user to details view
+[x] button takes user to add movie page
 
 ## Details view ##
 [x] shows all details including genre
@@ -16,11 +17,11 @@
 [ ] style
 
 ## Add movie page ##
-[ ] input field for movie title
-[ ] input field for movie poster image url
-[ ] text are for movie description
-[ ] dropdown for genre
-[ ] cancel button which brings user to home/list page
+[x] input field for movie title
+[x] input field for movie poster image url
+[x] text are for movie description
+[x] dropdown for genre
+[x] cancel button which brings user to home/list page
 [ ] save to submit to the database and bring to updated home/list page
 
 [ ] style

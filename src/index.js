@@ -13,10 +13,23 @@ import createSagaMiddleware from 'redux-saga';
 import axios from 'axios';
 import {takeEvery, put} from 'redux-saga/effects';
 
+const alwaysGenres = [
+    'Adventure', 'Animated', 'Biographical',
+    'Comedy', 'Disaster', 'Drama',
+    'Epic', 'Fantasy', 'Musical',
+    'Romantic', 'Science Fiction', 'Space-Opera',
+    'Superhero'
+]
+
+const staticGenres = (state = alwaysGenres) => { // these will be mapped through in the select dropdown
+    return state;                                // to avoid typing out all the genres. This idea is
+}                                                // credited to David Gould who threw it in the Tarjan Slack
+
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery("FETCH_MOVIE", fetchMovieSaga);
     yield takeEvery("FETCH_DETAIL", fetchDetailSaga);
+    yield takeEvery("ADD_MOVIE", addMovieSaga);
 }
 
 function* fetchMovieSaga() {
@@ -31,6 +44,13 @@ function* fetchMovieSaga() {
     });
 } // end fetchMovieSaga
 
+function* addMovieSaga() {
+    yield axios({
+        method: 'POST',
+        url: '/api/movie'
+    });
+} // addMovieSaga
+
 function* fetchDetailSaga(action) {
     console.log('fetchDetailSaga hit, payload:', action.payload);
     let response = yield axios({
@@ -38,8 +58,6 @@ function* fetchDetailSaga(action) {
         url: `api/movie/${action.payload}`
     });
     console.log('back from fetchDetailSaga GET with response.data:', response.data);
-    console.log('response.data.details:', response.data.details);
-    console.log('response.data.genres:', response.data.genres);
     
     yield put({
         type: 'MOVIE_DETAIL',
@@ -74,6 +92,7 @@ const movie = (state = [], action) => {
     return state;
 }
 
+// Reducer used to store in reduxState genre(s) of one movie
 const genres = (state = [], action) => {
     console.log('hit movie Reducer with:', action.payload);
     if(action.type === 'MOVIE_GENRES') {
@@ -82,15 +101,6 @@ const genres = (state = [], action) => {
     return state;
 }
 
-// Reducer used to store the movie genres
-// const genres = (state = [], action) => {
-//     switch (action.type) {
-//         case 'SET_GENRES':
-//             return action.payload;
-//         default:
-//             return state;
-//     }
-// }
 
 // Create one store that all components can use
 const storeInstance = createStore(
@@ -98,6 +108,7 @@ const storeInstance = createStore(
         movies,
         genres,
         movie,
+        staticGenres,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
