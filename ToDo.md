@@ -7,7 +7,7 @@
 
 ## Home page ##
 [x] displays all movies in the database with posters
-[ ] on movie click, bring user to details view
+[x] on movie click, bring user to details view
 
 ## Details view ##
 [ ] shows all details including genre

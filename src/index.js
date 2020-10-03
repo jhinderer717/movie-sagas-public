@@ -37,11 +37,15 @@ function* fetchDetailSaga(action) {
         method: 'GET',
         url: `api/movie/${action.payload}`
     });
-    console.log('back from fetchDetailSaga GET with:', response.data);
+    console.log('back from fetchDetailSaga GET with response.data:', response.data);
     yield put({
-        type: 'SET_MOVIES',
+        type: 'MOVIE_DETAIL',
         payload: response.data
     });
+    // yield put({
+    //     type: 'SET_GENRES',
+    //     payload: response.data.genres
+    // });
 }
 
 // Create sagaMiddleware
@@ -58,10 +62,17 @@ const movies = (state = [], action) => {
 }
 
 const movie = (state = [], action) => {
-    console.log('movie Reducer action.payload:', action.payload);
-    if(action.type === 'SET_MOVIE'){
+    console.log('hit movie Reducer with:', action.payload);
+    if(action.type === 'MOVIE_DETAIL') {
         return action.payload;
     }
+
+    // if (action.type === 'MOVIE_GENRE'){
+    //     return state = {
+    //         ...state,
+    //         genre: action.payload,
+    //     }
+    // }
     return state;
 }
 
