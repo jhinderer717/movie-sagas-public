@@ -21,14 +21,14 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   console.log('movie.router get/:id hit');
   //let queryText = `SELECT * FROM "movies" WHERE "id" = $1;`;
-  let detail = {
+  let routerResponse = {
     details: '',
     genres: []
   };
   let queryText1 = `SELECT * FROM "movies" WHERE "id" = $1;`;
   pool.query(queryText1, [req.params.id]).then(result => {
     // sends back the results of the movies table in an object
-    detail.details = result.rows[0];
+    routerResponse.details = result.rows[0];
   }).catch(error => {
     console.log(`"Frick."  - Colin Baumgard`, error);
     res.sendStatus(500);
@@ -45,9 +45,9 @@ router.get('/:id', (req, res) => {
     console.log('result.rows is:', result.rows);
     for(let i=0; i<result.rows.length; i++) {
       console.log('a genre', result.rows[i].genre);
-      detail.genres.push(result.rows[i].genre);
+      routerResponse.genres.push(result.rows[i].genre);
     }
-    res.send(detail);
+    res.send(routerResponse);
   }).catch(error => {
     console.log(`"Frick."  - Colin Baumgard`, error);
     res.sendStatus(500);

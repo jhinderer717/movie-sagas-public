@@ -38,20 +38,24 @@ function* fetchDetailSaga(action) {
         url: `api/movie/${action.payload}`
     });
     console.log('back from fetchDetailSaga GET with response.data:', response.data);
+    console.log('response.data.details:', response.data.details);
+    console.log('response.data.genres:', response.data.genres);
+    
     yield put({
         type: 'MOVIE_DETAIL',
-        payload: response.data
+        payload: response.data.details
     });
-    // yield put({
-    //     type: 'SET_GENRES',
-    //     payload: response.data.genres
-    // });
+
+    yield put({
+        type: 'MOVIE_GENRES',
+        payload: response.data.genres
+    });
 }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
-// Reducer used to store movies returned from the server
+// Reducer used to store in reduxState movies returned from the server
 const movies = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIES':
@@ -61,30 +65,32 @@ const movies = (state = [], action) => {
     }
 }
 
+// Reducer used to store in reduxState movie details of one movie
 const movie = (state = [], action) => {
     console.log('hit movie Reducer with:', action.payload);
     if(action.type === 'MOVIE_DETAIL') {
         return action.payload;
     }
+    return state;
+}
 
-    // if (action.type === 'MOVIE_GENRE'){
-    //     return state = {
-    //         ...state,
-    //         genre: action.payload,
-    //     }
-    // }
+const genres = (state = [], action) => {
+    console.log('hit movie Reducer with:', action.payload);
+    if(action.type === 'MOVIE_GENRES') {
+        return action.payload;
+    }
     return state;
 }
 
 // Reducer used to store the movie genres
-const genres = (state = [], action) => {
-    switch (action.type) {
-        case 'SET_GENRES':
-            return action.payload;
-        default:
-            return state;
-    }
-}
+// const genres = (state = [], action) => {
+//     switch (action.type) {
+//         case 'SET_GENRES':
+//             return action.payload;
+//         default:
+//             return state;
+//     }
+// }
 
 // Create one store that all components can use
 const storeInstance = createStore(

@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './Details.css';
 
 
 class Details extends Component {
 
+    
     render(){
-        console.log('Details props.reduxState:', this.props.reduxState.movie);
-        //console.log('this.props.reduxState.detail', this.props.reduxState.detail);
+        console.log('Details props', this.props);
         return( // Can also just use <> </> instead of divs
-            <div>
-                {JSON.stringify(this.props.reduxState.movie)}
-                <br></br>
-                {/* <img src={this.props.reduxState.detail.poster} alt="" /> */}
-                {/* {this.props.reduxState.map(movie => 
-                    key={movie.id}
-                    
-                )} */}
+            <div className="detailDiv">
+                
+                <img src={this.props.movieDetails.poster} alt="" />
+                <p>{this.props.movieDetails.description}</p>
+                <h4>Genres:</h4>
+                {this.props.movieGenres.map((genre, i) => 
+                    <p key={i}>
+                        {genre}
+                    </p>
+                )}
             </div>
         );
     }
 }
 
-const mapStateToProps = (reduxState) => ({
-    reduxState,
-});
+const mapStateToProps = (reduxState) => {
+    let locationProps = {
+        movieDetails: reduxState.movie,
+        movieGenres: reduxState.genres,
+    };
+    return locationProps;
+};
 
 export default connect(mapStateToProps)(Details);
 
