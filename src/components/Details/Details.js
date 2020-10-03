@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './Details.css';
+import {Link} from 'react-router-dom';
 
 
 class Details extends Component {
@@ -10,6 +11,7 @@ class Details extends Component {
         console.log('Details props', this.props);
         return( // Can also just use <> </> instead of divs
             <div className="detailDiv">
+                <Link to='/'>Back</Link>
                 
                 <img src={this.props.movieDetails.poster} alt="" />
                 <p>{this.props.movieDetails.description}</p>

@@ -10,9 +10,10 @@
 [x] on movie click, bring user to details view
 
 ## Details view ##
-[ ] shows all details including genre
+[x] shows all details including genre
    - Hint : You can make a GET request for a specific movie.
-[ ] back to list button
+[x] back to list button
+[ ] style
 
 ## Add movie page ##
 [ ] input field for movie title
