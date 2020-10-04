@@ -6,6 +6,8 @@ import './MovieItem.css';
 // Material-UI
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import { deepOrange } from '@material-ui/core/colors';
+import { red } from '@material-ui/core/colors';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
@@ -28,17 +30,18 @@ class MovieItem extends Component {
         return( // Can also just use <> </> instead of divs
             <Link to='/detail'>
 
-                {/* <Card> */}
+                <Card variant="outlined" color="primary">
                     <div className="movieItem" onClick={() => this.movieClick(this.props.id)}>
                         <img src={this.props.movie.poster} alt=""/>
                         <h2>{this.props.movie.title}</h2>
                         {this.props.movie.description}
                     </div>
-                {/* </Card> */}
+                </Card>
                 {/* <Button variant="contained" 
                         color="primary">Mat UI?</Button>   --- Don't need this, just wanted to make
                                                                sure material-ui worked */}
 
+                {/* <Card variant="outlined" >Please work Card</Card> */}
             </Link>
         );
     }

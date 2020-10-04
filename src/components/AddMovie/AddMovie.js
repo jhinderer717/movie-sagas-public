@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
+import {Button, Card, CardContent} from '@material-ui/core';
+import { red } from '@material-ui/core/colors';
+import './AddMovie.css';
 
 
 class AddMovie extends Component {
@@ -26,14 +29,18 @@ class AddMovie extends Component {
             payload: this.state,
         });
         // import withRouter, decorate export withRouter()
-        this.props.history.push('/');// take out out join table id?, update material ui
+        this.sendHome();// take out out join table id?, update material ui
+    }
+
+    sendHome() {
+        this.props.history.push('/');
     }
 
     render(){
         console.log('AddMovie state', this.state);
         return( // Can also just use <> </> instead of divs
             <div>
-                AddMovie
+                <h3 className="addHeader">AddMovie</h3>
                 <input placeholder="Title" type="text" onChange={(event) => this.handleStateChange(event, 'title')} />
                 <input placeholder="Poster url" type="text" onChange={(event) => this.handleStateChange(event, 'poster')}/>
                 <textarea placeholder="Description" rows="4" cols="50" 
@@ -44,8 +51,16 @@ class AddMovie extends Component {
                     )}
                 </select>
 
-                <Link to='/'><button>Cancel</button></Link>
-                <button onClick={() => this.additionSubmit(this.props)}>Submit</button>
+                <Button 
+                    className="favorite"
+                    variant="contained" 
+                    color="primary"
+                    onClick={() => this.additionSubmit(this.props)}>Submit</Button>
+                <Button 
+                    className="favorite"
+                    variant="contained" 
+                    color="primary"
+                    onClick={() => this.sendHome(this.props)}>Cancel</Button>
             </div>
         );
     }

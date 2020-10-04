@@ -1,9 +1,5 @@
-.backButton{
+.addMovieButton{
    padding: 10px;
    text-align: left;
    background-color: black;
-}
-
-.detailImg{
-   height: 400px;
 }
