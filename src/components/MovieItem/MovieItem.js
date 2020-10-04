@@ -12,7 +12,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import {withRouter} from 'react-router-dom';
 
 
 class MovieItem extends Component {
@@ -23,30 +23,25 @@ class MovieItem extends Component {
             type: "FETCH_DETAIL",
             payload: this.props.movie.id
         });
+        this.props.history.push('/detail');
+    }
+
+    sendDetails() {
+        this.props.history.push('/detail');
     }
 
     render(){
         // console.log('MovieItem props:', this.props);
         return( // Can also just use <> </> instead of divs
-            <Link to='/detail'>
-
-                <Card variant="outlined" color="primary">
-                    <div className="movieItem" onClick={() => this.movieClick(this.props.id)}>
-                        <img src={this.props.movie.poster} alt=""/>
-                        <h2>{this.props.movie.title}</h2>
-                        {this.props.movie.description}
-                    </div>
-                </Card>
-                {/* <Button variant="contained" 
-                        color="primary">Mat UI?</Button>   --- Don't need this, just wanted to make
-                                                               sure material-ui worked */}
-
-                {/* <Card variant="outlined" >Please work Card</Card> */}
-            </Link>
+            <div className="movieItem" onClick={() => this.movieClick(this.props.id)}>
+                <img className="moviePoster" src={this.props.movie.poster} alt=""/>
+                <h2>{this.props.movie.title}</h2>
+                {this.props.movie.description}
+            </div>
         );
     }
 }
 
-export default connect()(MovieItem);
+export default connect()(withRouter(MovieItem));
 
 // Don't forget to import Component into parent Component

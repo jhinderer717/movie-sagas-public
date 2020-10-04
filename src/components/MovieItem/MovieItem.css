@@ -1,7 +1,22 @@
-.MuiCard-root {
-   /* height: 200px; */
-   /* width: 90%; */
+/* .MuiCard-root {
+   height: 200px; */
+   /* width: 90%;
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
+} */
+
+.movieItem{
+   display: flex;
+   justify-content: space-between;
+   padding: 3px;
+}
+
+.moviePoster{
+   text-align: left;
+}
+
+h2{
+   padding: 3px;
+   margin: 0px;
 }

@@ -1,11 +1,24 @@
 .addHeader{
-
-}
-h3{
-   background-color: rgb(233, 0, 0);
-   
+   background-color: black;
    margin: 0px;
    padding: 20px;
    color: white;
-   text-shadow: 4px 3px black;
- }
+   text-shadow: 2px 1px grey;
+}
+
+.addCrit{
+   padding-top: 30px;
+   padding-bottom: 30px;
+   padding-left: 50px;
+   padding-right: 50px;
+   display: grid;
+}
+
+input, textarea, select{
+   margin: 8px;
+}
+
+.cancelButton{
+   margin-top: 8px;
+   display: grid;
+}

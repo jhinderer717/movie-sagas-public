@@ -4,6 +4,27 @@
    background-color: black;
 }
 
+.entityDiv{
+   /* display: block; */
+   /* justify-content: space-between; */
+   /* text-align: left; */
+   display: flex;
+   justify-content: space-between;
+   padding: 3px;
+}
 .detailImg{
-   height: 400px;
+   /* height: 400px; */
+   padding: 3px;
+   text-align: left;
+}
+
+p{
+   height: fit-content;
+}
+
+h4{
+   height: fit-content;
+}
+.detailTitle{
+
 }

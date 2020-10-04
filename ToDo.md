@@ -24,6 +24,6 @@
 [x] cancel button which brings user to home/list page
 [x] save to submit to the database and bring to updated home/list page
 
-[ ] style
+[~] style
 [ ] update readme
 [ ] submit in assignment portal

@@ -40,27 +40,39 @@ class AddMovie extends Component {
         console.log('AddMovie state', this.state);
         return( // Can also just use <> </> instead of divs
             <div>
-                <h3 className="addHeader">AddMovie</h3>
-                <input placeholder="Title" type="text" onChange={(event) => this.handleStateChange(event, 'title')} />
-                <input placeholder="Poster url" type="text" onChange={(event) => this.handleStateChange(event, 'poster')}/>
-                <textarea placeholder="Description" rows="4" cols="50" 
-                    onChange={(event) => this.handleStateChange(event, 'description')}/>
-                <select value={this.state.genreId} onChange={(event) => this.handleStateChange(event, 'genre_id')}>
-                    {this.props.genres.map((genre, i) => 
-                        <option key={i} value={i+1}>{genre}</option>
-                    )}
-                </select>
+                <h3 className="addHeader">ADD A MOVIE</h3>
 
-                <Button 
-                    className="favorite"
-                    variant="contained" 
-                    color="primary"
-                    onClick={() => this.additionSubmit(this.props)}>Submit</Button>
-                <Button 
-                    className="favorite"
-                    variant="contained" 
-                    color="primary"
-                    onClick={() => this.sendHome(this.props)}>Cancel</Button>
+                <div className="addCrit">
+                    <input placeholder="Title" type="text" onChange={(event) => this.handleStateChange(event, 'title')} />
+
+                    <input placeholder="Poster url" type="text" onChange={(event) => this.handleStateChange(event, 'poster')}/>
+
+                    <textarea placeholder="Description" rows="4" cols="50" 
+                        onChange={(event) => this.handleStateChange(event, 'description')}/>
+
+                    <select value={this.state.genreId} onChange={(event) => this.handleStateChange(event, 'genre_id')}>
+                        {this.props.genres.map((genre, i) => 
+                            <option key={i} value={i+1}>{genre}</option>
+                        )}
+                    </select>
+                    <br></br>
+
+                    <Button
+                        variant="contained" 
+                        color="primary"
+                        onClick={() => this.additionSubmit(this.props)}
+                    >Submit
+                    </Button>
+
+                    <div className="cancelButton">
+                        <Button 
+                            variant="contained" 
+                            color="primary"
+                            onClick={() => this.sendHome(this.props)}
+                        >Cancel
+                        </Button>
+                    </div>
+                </div>
             </div>
         );
     }
