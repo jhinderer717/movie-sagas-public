@@ -26,4 +26,4 @@
 
 [~] style
 [ ] update readme
-[ ] submit in assignment portal
+[x] submit in assignment portal
