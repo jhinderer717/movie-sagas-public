@@ -30,7 +30,6 @@ h1{
   to { transform: rotate(360deg); }
 }
 
-.favorite{
-  padding: 5px;
-  display: block;
+img{
+  height: 250px;
 }

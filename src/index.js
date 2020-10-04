@@ -37,7 +37,7 @@ function* fetchMovieSaga() {
         method: 'GET',
         url: '/api/movie'
     });
-    console.log('response from fetchMovieSaga:', response.data);
+    //console.log('response from fetchMovieSaga:', response.data);
     yield put({
         type: 'SET_MOVIES',
         payload: response.data

@@ -22,7 +22,7 @@
 [x] text are for movie description
 [x] dropdown for genre
 [x] cancel button which brings user to home/list page
-[ ] save to submit to the database and bring to updated home/list page
+[x] save to submit to the database and bring to updated home/list page
 
 [ ] style
 [ ] update readme

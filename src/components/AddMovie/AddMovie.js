@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 
 class AddMovie extends Component {
@@ -24,12 +25,8 @@ class AddMovie extends Component {
             type: "ADD_MOVIE",
             payload: this.state,
         });
-        // this.props.dispatch({
-        //     type: "FETCH_MOVIE"
-        // });
-        //console.log('AddMovie props', this.props);
         // import withRouter, decorate export withRouter()
-        //this.props.history.push('/');// take out out join table id?, update material ui
+        this.props.history.push('/');// take out out join table id?, update material ui
     }
 
     render(){
@@ -61,6 +58,6 @@ const mapStateToProps = (reduxState) => {
     return locationProps;
 }
 
-export default connect(mapStateToProps)(AddMovie);
+export default connect(mapStateToProps)(withRouter(AddMovie));
 
 // Don't forget to import Component into parent Component
