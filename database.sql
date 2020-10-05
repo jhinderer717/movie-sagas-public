@@ -12,6 +12,45 @@ CREATE TABLE "genres" (
 );
 
 
+CREATE TABLE "movie_genre" (
+	id SERIAL PRIMARY KEY,
+	movie_id INT REFERENCES "movies",
+	genre_id INT REFERENCES "genres"
+);
+
+INSERT INTO "movie_genre" ("movie_id", "genre_id")
+	VALUES (1, 6),
+			(1, 8),
+			(1, 11),
+			(2, 6),
+			(2, 10),
+			(3, 13),
+			(4, 1),
+			(4, 2),
+			(5, 5),
+			(5, 6),
+			(6, 1),
+			(6, 8),
+			(7, 1),
+			(7, 7),
+			(8, 6),
+			(9, 2),
+			(9, 4),
+			(10, 1),
+			(10, 11),
+			(10, 12),
+			(11, 1),
+			(11, 7),
+			(11, 11),
+			(12, 3),
+			(13, 5),
+			(13, 7),
+			(13, 10),
+			(14, 1),
+			(14, 2),
+			(14, 4);
+
+
 -- CREATE JUNCTION TABLE
 -- You will need to create the junction table that stores the relationships between "movies" and "genres"
 -- This table will need to be populated with some data as well (INSERTS)
