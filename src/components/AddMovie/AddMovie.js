@@ -59,7 +59,7 @@ class AddMovie extends Component {
 
                     <Button
                         variant="contained" 
-                        color="primary"
+                        color="primary"// secondary?
                         onClick={() => this.additionSubmit(this.props)}
                     >Submit
                     </Button>
@@ -67,7 +67,7 @@ class AddMovie extends Component {
                     <div className="cancelButton">
                         <Button 
                             variant="contained" 
-                            color="primary"
+                            color="secondary"
                             onClick={() => this.sendHome(this.props)}
                         >Cancel
                         </Button>
